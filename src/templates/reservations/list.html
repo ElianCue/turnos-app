@@ -1,0 +1,35 @@
+{% extends './base.html' %}
+
+{% block title %}Lista de turnos{% endblock %}
+
+{% block customCSS %}
+{% endblock %}
+{% block body %}
+<div class="lista-turnos container justify-content-center align-items-center h-100 bg-light ">
+    <h1 class="h1 pb-2 text-center">Lista de turnos</h1>
+    <div class="container justify-content-center mt-5">
+        <table class="table table-success ">
+            <thead>
+                <th scope="col">Día</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Doctor</th>
+                <th scope="col">Paciente</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Delete</th>
+            </thead>
+            {% for turno in turnos %}
+            <tbody>
+                <th scope="row">{{turno.dia}}</th>
+                <td class="table-active">{{turno.horario}}</td>
+                <td class="table-active">{{turno.profesional.nombre}}</td>
+                <td class="table-active">{{turno.paciente}}</td>
+                <td class="table-active">{{turno.nroTel}}</td>
+                <td><button class="btn btn-danger">X</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <a class=" btn btn-success" href="{{ url_for('index') }}">Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

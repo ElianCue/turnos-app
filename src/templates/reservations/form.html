@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+
+{% block title %}Lista de turnos{% endblock %}
+
+{% block customCSS %}
+{% endblock %}
+{% block body %}
+<div class="container bg-light p-5 rounded">
+  <form method="post">
+      <legend class="turnos">Reservar turno</legend>
+      <div class="pb-3">
+          <label class="form-label">Profesional</label>
+          <select name="profesional" class="form-select" required>
+              {% for profesional in profesionales %}
+                  <option value="{{ profesional.id }}">{{ profesional.nombre }} - {{ profesional.especialidad }}</option>
+              {% endfor %}
+          </select>
+      </div>
+      <div class="">
+          <label for="" class="form-label">Día</label>
+          <input type="date" name="dia" class="form-control" required><br>
+      </div>
+      <div class="">
+          <label for="" class="form-label">Horario</label>
+          <input type="time" name="horario" class="form-control" required><br>                
+      </div>
+      <div class="">
+          <label for="" class="form-label">Paciente</label>
+          <input type="text" name="paciente" class="form-control" required><br>
+      </div>
+      <div class="">
+          <label for="" class="form-label">Numero de telefono</label>
+          <input type="text" name="nroTel" class="form-control" required><br>
+      </div>
+      <button type="submit" class="btn btn-success">Reservar</button>
+  </form>
+  <div class="button-back mt-2">
+      <a href="{{ url_for('index') }}" class="btn btn-secondary" >Volver al inicio</a>
+  </div>
+</div>
+
+{% endblock %}
